@@ -1,3 +1,6 @@
+package SampleSpec
+
+import Sample.Greeter
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 

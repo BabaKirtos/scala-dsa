@@ -16,7 +16,14 @@
       </SbtProjectSettings>
       <SbtProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/stack" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/stack" />
+            <option value="$PROJECT_DIR$/stack/project" />
+          </set>
+        </option>
         <option name="resolveSbtClassifiers" value="true" />
+        <option name="sbtVersion" value="1.10.1" />
       </SbtProjectSettings>
     </option>
   </component>
