@@ -14,6 +14,10 @@
         <option name="resolveSbtClassifiers" value="true" />
         <option name="sbtVersion" value="1.10.1" />
       </SbtProjectSettings>
+      <SbtProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/stack" />
+        <option name="resolveSbtClassifiers" value="true" />
+      </SbtProjectSettings>
     </option>
   </component>
 </project>
