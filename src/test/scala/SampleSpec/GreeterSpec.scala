@@ -7,7 +7,9 @@ import org.scalatest.wordspec.AnyWordSpecLike
 class GreeterSpec extends AnyWordSpecLike with Matchers {
 
   "The Greeter object" should {
+
     "return a greeting message" when {
+      
       "a name is provided" in {
         val result = Greeter.greet("Alice")
         result should be("Hello, Alice!")
