@@ -33,5 +33,18 @@ public class Introduction {
         // Java uses unicode
         int someChar = 's';
         System.out.println(someChar);
+
+        // if condition
+        int someValue = 30;
+        if (someValue > 25) {
+            System.out.println("Value is greater than 25");
+        }
+
+        // while condition
+        int count = 1;
+        while (count <= 5) {
+            System.out.println(count);
+            count += 1;
+        }
     }
 }
