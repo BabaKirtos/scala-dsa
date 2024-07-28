@@ -40,11 +40,16 @@ public class Introduction {
             System.out.println("Value is greater than 25");
         }
 
-        // while condition
+        // while loop
         int count = 1;
-        while (count <= 5) {
-            System.out.println(count);
+        while (count != 6) {
+            System.out.println("while loop count: " + count);
             count ++;
+        }
+
+        // for loop
+        for (int forCount = 0; forCount <= 10; forCount += 2) {
+            System.out.println("for loop count: " + forCount);
         }
     }
 }
