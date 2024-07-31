@@ -44,12 +44,23 @@ public class Introduction {
         int count = 1;
         while (count != 6) {
             System.out.println("while loop count: " + count);
-            count ++;
+            count++;
         }
 
         // for loop
         for (int forCount = 0; forCount <= 10; forCount += 2) {
             System.out.println("for loop count: " + forCount);
         }
+
+        // if else-if else statements
+        int salary = 34000;
+        if (salary < 10000) {
+            salary += 3000;
+        } else if (salary >= 10000 && salary < 40000) {
+            salary += 2000;
+        } else {
+            salary += 1000;
+        }
+        System.out.println(salary);
     }
 }
