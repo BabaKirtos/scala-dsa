@@ -62,5 +62,41 @@ public class Introduction {
             salary += 1000;
         }
         System.out.println(salary);
+
+        // do while loop
+        // used when we want to run the loop atleast once
+        int n = 5;
+        do {
+            System.out.println(n);
+            n--;
+        } while (n != 0);
+
+        // find largest of 3 numbers
+        System.out.println("Enter 3 numbers:");
+
+        int n1 = input.nextInt();
+        int n2 = input.nextInt();
+        int n3 = input.nextInt();
+
+        int max = n1;
+
+        if (n2 > max) {
+            max = n2;
+        }
+        if (n3 > max) {
+            max = n3;
+        }
+        System.out.println("Max number is: " + max);
+
+        // take a char input and tell if it is upper or lower case
+        System.out.println("Enter a character:");
+
+        char ch = input.next().trim().charAt(0);
+
+        if (ch >= 'a' && ch <= 'z') {
+            System.out.println("Its lower case");
+        } else {
+            System.out.println("Its upper case");
+        }
     }
 }
