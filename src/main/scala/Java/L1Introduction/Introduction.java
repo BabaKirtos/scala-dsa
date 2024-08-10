@@ -155,9 +155,8 @@ public class Introduction {
             char op = input.next().trim().charAt(0);
             if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%') {
                 // input operands
-                System.out.println("Enter operand 1:");
+                System.out.println("Enter operands:");
                 int op1 = input.nextInt();
-                System.out.println("Enter operand 2:");
                 int op2 = input.nextInt();
                 if (op == '+') {
                     ans = op1 + op2;
@@ -165,8 +164,12 @@ public class Introduction {
                     ans = op1 - op2;
                 } else if (op == '*') {
                     ans = op1 * op2;
-                } else if (op == '/' && op2 != 0) {
-                    ans = op1 / op2;
+                } else if (op == '/') {
+                    if (op2 == 0) {
+                        System.out.println("Cannot divide by zero!");
+                    } else {
+                        ans = op1 / op2;
+                    }
                 } else if (op == '%') {
                     ans = op1 % op2;
                 }
@@ -175,8 +178,7 @@ public class Introduction {
                 System.out.println("Thank you for using the calculator app..");
                 break;
             } else {
-                System.out.println("Unsupported operator.. exiting calculator app..");
-                break;
+                System.out.println("Unsupported operator.. retry");
             }
         }
     }
