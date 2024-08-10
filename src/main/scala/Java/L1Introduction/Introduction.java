@@ -137,5 +137,47 @@ public class Introduction {
             }
         }
         System.out.println("Target occured " + occurence + " times");
+
+        // reverse a given number
+        int toReverse = 34523986;
+        int reversed = 0;
+        while (toReverse != 0) {
+            reversed = (reversed * 10) + (toReverse % 10);
+            toReverse /= 10;
+        }
+        System.out.println("Reversed number is " + reversed);
+
+        // build a calculator app
+        // the app should terminate when user enters x
+        while (true) {
+            int ans = -1;
+            System.out.println("Enter operator:");
+            char op = input.next().trim().charAt(0);
+            if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%') {
+                // input operands
+                System.out.println("Enter operand 1:");
+                int op1 = input.nextInt();
+                System.out.println("Enter operand 2:");
+                int op2 = input.nextInt();
+                if (op == '+') {
+                    ans = op1 + op2;
+                } else if (op == '-') {
+                    ans = op1 - op2;
+                } else if (op == '*') {
+                    ans = op1 * op2;
+                } else if (op == '/' && op2 != 0) {
+                    ans = op1 / op2;
+                } else if (op == '%') {
+                    ans = op1 % op2;
+                }
+                System.out.println("Answer is: " + ans);
+            } else if (op == 'x') {
+                System.out.println("Thank you for using the calculator app..");
+                break;
+            } else {
+                System.out.println("Unsupported operator.. exiting calculator app..");
+                break;
+            }
+        }
     }
 }
