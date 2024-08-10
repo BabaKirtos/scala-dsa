@@ -17,7 +17,8 @@ public class Introduction {
         // To get input from the console
         System.out.println("Please enter your roll number:");
         Scanner input = new Scanner(System.in);
-        int rollNumber = input.nextInt();
+//        int rollNumber = input.nextInt();
+        int rollNumber = 43;
         System.out.println("Your roll number is: " + rollNumber);
 
         // automatic type promotion
@@ -74,9 +75,12 @@ public class Introduction {
         // find largest of 3 numbers
         System.out.println("Enter 3 numbers:");
 
-        int n1 = input.nextInt();
-        int n2 = input.nextInt();
-        int n3 = input.nextInt();
+//        int n1 = input.nextInt();
+//        int n2 = input.nextInt();
+//        int n3 = input.nextInt();
+        int n1 = 34;
+        int n2 = 98;
+        int n3 = 5;
 
         int max = n1;
 
@@ -91,12 +95,47 @@ public class Introduction {
         // take a char input and tell if it is upper or lower case
         System.out.println("Enter a character:");
 
-        char ch = input.next().trim().charAt(0);
+//        char ch = input.next().trim().charAt(0);
+        char ch = 'T';
 
         if (ch >= 'a' && ch <= 'z') {
             System.out.println("Its lower case");
         } else {
             System.out.println("Its upper case");
         }
+
+        // find the nth fibonacci number => 0,1,1,2,3,5,8
+        System.out.println("Enter the n for fibonacci number:");
+//        int nFib = input.nextInt();
+        int nFib = 9;
+        int previous = 0;
+        int current = 1;
+        int counter = 2;
+        while (counter <= nFib) {
+            int temp = current;
+            current += previous;
+            previous = temp;
+            counter++;
+        }
+        if (nFib == 0) {
+            System.out.println(previous);
+        } else {
+            System.out.println(current);
+        }
+
+        // find occurence of a given digit in a number
+        // ex - 13453256353 - 3 occurs 4 time
+        int mainNum = 1345325353;
+        int targetNum = 3;
+        int occurence = 0;
+        while (mainNum != 0) {
+            if (mainNum % 10 == targetNum) {
+                occurence += 1;
+                mainNum /= 10;
+            } else {
+                mainNum /= 10;
+            }
+        }
+        System.out.println("Target occured " + occurence + " times");
     }
 }
