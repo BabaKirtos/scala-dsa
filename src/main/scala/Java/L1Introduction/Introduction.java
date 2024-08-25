@@ -151,7 +151,7 @@ public class Introduction {
         // the app should terminate when user enters x
         while (true) {
             int ans = -1;
-            System.out.println("Enter operator:");
+            System.out.println("Enter an operator (enter x to quit):");
             char op = input.next().trim().charAt(0);
             if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%') {
                 // input operands
@@ -181,5 +181,33 @@ public class Introduction {
                 System.out.println("Unsupported operator.. retry");
             }
         }
+
+        // `equals` checks value of the argument string object against this object
+        // by 'this' object we mean the object on which the method is called
+        // `==` checks the reference of the object, which can give true or false
+        // based on if both the variables are pointing to the same object or not
+//        String ex = "baba";
+//        String ex1 = "baba";
+//        System.out.println(ex == ex1); // can be true or false
+//        System.out.println(ex.equals(ex1)); // will always be true
+
+        // switch statements
+        // more efficient than if-else-if ladder
+        System.out.println("Enter a fruit:");
+        String fruit = input.next();
+        switch (fruit) {
+            case "Mango":
+                System.out.println("It's yellow");
+                break;
+            case "Apple":
+                System.out.println("It's red");
+                break;
+            case "Orange":
+                System.out.println("It's orange");
+                break;
+            default:
+                System.out.println("Please enter a valid fruit!");
+        }
+
     }
 }
