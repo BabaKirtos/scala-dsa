@@ -17,7 +17,7 @@ public class Introduction {
         // To get input from the console
         System.out.println("Please enter your roll number:");
         Scanner input = new Scanner(System.in);
-//        int rollNumber = input.nextInt();
+        // int rollNumber = input.nextInt();
         int rollNumber = 43;
         System.out.println("Your roll number is: " + rollNumber);
 
@@ -75,9 +75,9 @@ public class Introduction {
         // find largest of 3 numbers
         System.out.println("Enter 3 numbers:");
 
-//        int n1 = input.nextInt();
-//        int n2 = input.nextInt();
-//        int n3 = input.nextInt();
+        // int n1 = input.nextInt();
+        // int n2 = input.nextInt();
+        // int n3 = input.nextInt();
         int n1 = 34;
         int n2 = 98;
         int n3 = 5;
@@ -95,7 +95,7 @@ public class Introduction {
         // take a char input and tell if it is upper or lower case
         System.out.println("Enter a character:");
 
-//        char ch = input.next().trim().charAt(0);
+        // char ch = input.next().trim().charAt(0);
         char ch = 'T';
 
         if (ch >= 'a' && ch <= 'z') {
@@ -106,7 +106,7 @@ public class Introduction {
 
         // find the nth fibonacci number => 0,1,1,2,3,5,8
         System.out.println("Enter the n for fibonacci number:");
-//        int nFib = input.nextInt();
+        // int nFib = input.nextInt();
         int nFib = 9;
         int previous = 0;
         int current = 1;
@@ -186,10 +186,10 @@ public class Introduction {
         // by 'this' object we mean the object on which the method is called
         // `==` checks the reference of the object, which can give true or false
         // based on if both the variables are pointing to the same object or not
-//        String ex = "baba";
-//        String ex1 = "baba";
-//        System.out.println(ex == ex1); // can be true or false
-//        System.out.println(ex.equals(ex1)); // will always be true
+        // String ex = "baba";
+        // String ex1 = "baba";
+        // System.out.println(ex == ex1); // can be true or false
+        // System.out.println(ex.equals(ex1)); // will always be true
 
         // switch statements
         // more efficient than if-else-if ladder
