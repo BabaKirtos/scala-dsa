@@ -208,6 +208,5 @@ public class Introduction {
             default:
                 System.out.println("Please enter a valid fruit!");
         }
-
     }
 }
