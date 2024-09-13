@@ -192,7 +192,8 @@ public class Introduction {
         // System.out.println(ex.equals(ex1)); // will always be true
 
         // switch statements
-        // more efficient than if-else-if ladder
+        // It maybe more efficient than if-else-if ladder
+        // https://stackoverflow.com/questions/10287700/difference-between-jvms-lookupswitch-and-tableswitch
         System.out.println("Enter a fruit:");
         String fruit = input.next();
         // switch (fruit) {
@@ -208,6 +209,7 @@ public class Introduction {
         //     default:
         //         System.out.println("Please enter a valid fruit!");
         // }
+
         // A better switch
         switch (fruit) {
             case "Mango" -> System.out.println("It's yellow");
