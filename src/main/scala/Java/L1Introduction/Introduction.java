@@ -195,18 +195,25 @@ public class Introduction {
         // more efficient than if-else-if ladder
         System.out.println("Enter a fruit:");
         String fruit = input.next();
+        // switch (fruit) {
+        //     case "Mango":
+        //         System.out.println("It's yellow");
+        //         break;
+        //     case "Apple":
+        //         System.out.println("It's red");
+        //         break;
+        //     case "Orange":
+        //         System.out.println("It's orange");
+        //         break;
+        //     default:
+        //         System.out.println("Please enter a valid fruit!");
+        // }
+        // A better switch
         switch (fruit) {
-            case "Mango":
-                System.out.println("It's yellow");
-                break;
-            case "Apple":
-                System.out.println("It's red");
-                break;
-            case "Orange":
-                System.out.println("It's orange");
-                break;
-            default:
-                System.out.println("Please enter a valid fruit!");
+            case "Mango" -> System.out.println("It's yellow");
+            case "Apple" -> System.out.println("It's red");
+            case "Orange" -> System.out.println("It's an orange");
+            default -> System.out.println("Please enter a valid fruit!");
         }
     }
 }
