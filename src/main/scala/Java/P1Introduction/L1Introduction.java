@@ -1,8 +1,8 @@
-package Java.L1Introduction;
+package Java.P1Introduction;
 
 import java.util.Scanner;
 
-public class Introduction {
+public class L1Introduction {
 
     public static void main(String[] args) {
 
@@ -213,6 +213,7 @@ public class Introduction {
         // A better switch
         switch (fruit) {
             case "Mango" -> System.out.println("It's yellow");
+            case "Banana" -> System.out.println("It's yellow");
             case "Apple" -> System.out.println("It's red");
             case "Orange" -> System.out.println("It's an orange");
             default -> System.out.println("Please enter a valid fruit!");
