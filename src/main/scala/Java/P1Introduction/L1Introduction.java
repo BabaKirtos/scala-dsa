@@ -7,9 +7,9 @@ public class L1Introduction {
     public static void main(String[] args) {
 
         // In the below statement, a is the reference variable and 10 is the object
-        // a is stored in stack, whereas object 10 is stored in heap memory
+        // `a` is stored in stack, whereas object 10 is stored in heap memory
         String name = "Baba";
-        // When we reassign a to another value like 20, object 10 is cleared from
+        // When we reassign `a` to another value like 20, object 10 is cleared from
         // the heap memory by the garbage collector
         name = "Abhishek";
         System.out.println("Hi, my name is: " + name);
@@ -31,7 +31,7 @@ public class L1Introduction {
         System.out.println(d);
 
         // ascii value of s will be printed
-        // Java uses unicode
+        // Java uses Unicode
         int someChar = 's';
         System.out.println(someChar);
 
