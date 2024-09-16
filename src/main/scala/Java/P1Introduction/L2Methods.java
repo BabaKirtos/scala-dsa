@@ -19,6 +19,7 @@ public class L2Methods {
 
         // This is not going to work!
         // No pass by reference in Java!
+        // Only pass by value in Java!
         int n1 = 5, n2 = 7;
         swap(n1, n2);
         System.out.println(n1 + " " + n2);
@@ -32,9 +33,17 @@ public class L2Methods {
         // the original reference arr, but you can modify its content because
         // they both are pointing to the same Array objects
         int[] arr = {1, 3, 5, 8, 6, 4};
-        System.out.println(Arrays.hashCode(arr));
+        System.out.println("arr -> " + Arrays.toString(arr));
+        System.out.println("arr hashCode -> " + Arrays.hashCode(arr));
+        System.out.println("arr identity hashCode -> " + System.identityHashCode(arr));
         change(arr);
-        System.out.println(Arrays.toString(arr));
+        System.out.println("Modified arr -> " + Arrays.toString(arr));
+        // It was expected that the below hashCode would not change, but it does
+        // This is because the Array's hashCode method is based on the contents of the object
+        // If the contents are modified, the hashCode changes
+        // To check the reference hashCode we need to use System.identityHashCode() method
+        System.out.println("arr hashCode (not the same as before) -> " + Arrays.hashCode(arr));
+        System.out.println("arr identity hashCode (same as before) -> " + System.identityHashCode(arr));
     }
 
     // methods -> access modifier, return type name() {
@@ -65,7 +74,14 @@ public class L2Methods {
     }
 
     static void change(int[] nums) {
-        System.out.println(Arrays.hashCode(nums));
+        System.out.println("nums hashCode (same as arr) - > " + Arrays.hashCode(nums));
+        System.out.println("nums identity hashCode (same as arr) - > " + System.identityHashCode(nums));
         nums[0] = 99;
+        // reassigning nums to a new array would not affect arr
+        nums = new int[]{1, 2, 3, 4, 5};
+        // It will have a new hashCode but arr would still have the older one
+        System.out.println("new nums -> " + Arrays.toString(nums));
+        System.out.println("reassigned nums hashCode -> " + Arrays.hashCode(nums));
+        System.out.println("reassigned nums identity hashCode -> " + System.identityHashCode(nums));
     }
 }
