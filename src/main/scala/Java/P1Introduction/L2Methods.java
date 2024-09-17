@@ -10,7 +10,7 @@ public class L2Methods {
     static int x;
 
     // Declared and initialized final Global variable
-    // Its value can only be used but not modified
+    // Its value can be used but not modified
     final static float pi = 3.14f;
 
     public static void main(String[] args) {
@@ -92,9 +92,14 @@ public class L2Methods {
         fun(0, arr);
 
         // Method Overloading
+        // Arguments need to be different
         System.out.println("The sum is: " + sum(in));
         System.out.println("The sum is: " + sum(2, 3));
         System.out.println("The sum is: " + sum(5, 4));
+
+        // Questions
+        // If a number is prime
+        System.out.println(isPrime(5));
     }
 
     // methods -> access modifier, return type name() {
@@ -146,5 +151,19 @@ public class L2Methods {
         // Internally, `v` is an Array
         System.out.println(Arrays.toString(v));
         System.out.println(singleValue);
+    }
+
+    static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        int c = 2;
+        while (c * c <= n) {
+            if (n % c == 0) {
+                return false;
+            }
+            c++;
+        }
+        return c * c > n;
     }
 }
