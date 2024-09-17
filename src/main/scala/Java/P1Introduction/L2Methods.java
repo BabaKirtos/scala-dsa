@@ -100,6 +100,7 @@ public class L2Methods {
         // Questions
         // 1. If a number is prime
         System.out.println(isPrime(5));
+        System.out.println(isPrime(10));
         // 2. All the 3 digit Armstrong numbers
         armstrongNumbers();
     }
