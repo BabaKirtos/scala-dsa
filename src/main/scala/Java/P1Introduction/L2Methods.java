@@ -98,8 +98,10 @@ public class L2Methods {
         System.out.println("The sum is: " + sum(5, 4));
 
         // Questions
-        // If a number is prime
+        // 1. If a number is prime
         System.out.println(isPrime(5));
+        // 2. All the 3 digit Armstrong numbers
+        armstrongNumbers();
     }
 
     // methods -> access modifier, return type name() {
@@ -165,5 +167,20 @@ public class L2Methods {
             c++;
         }
         return c * c > n;
+    }
+
+    static void armstrongNumbers() {
+        for (int i = 100; i < 1000; i++) {
+            if (i == getCubeSum(i)) System.out.println(i);
+        }
+    }
+
+    static int getCubeSum(int i) {
+        int sum = 0;
+        while (i > 0) {
+            sum += (i % 10) * (i % 10) * (i % 10);
+            i = i / 10;
+        }
+        return sum;
     }
 }
