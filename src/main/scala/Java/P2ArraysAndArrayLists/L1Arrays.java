@@ -66,10 +66,67 @@ public class L1Arrays {
         // Remember, in Java there is only pass by value, so when a method is 
         // called on an array reference variable. Its value is copied and passed 
         // to the method, because the value being copied is itself a reference to the
-        // actual object, that object is modified. Reassigning a new object inside 
-        // the method will not affect the original reference variable
+        // actual object, that object is modified. Therefore, Arrays are mutable objects
+        // in Java. Reassigning a new object inside the method will not affect the
+        // original reference variable.
         change(rollNumbers);
         System.out.println(Arrays.toString(rollNumbers));
+
+        // Multi-Dimensional Arrays (Matrices)
+        /*
+            1 2 3
+            4 5 6
+            7 8 9
+         */
+        int[][] arr = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+        // Interestingly, `toString` method is designed for 1D Arrays XD
+        // It also shows how JVM is storing multidimensional arrays internally
+        // It is stored as an array of arrays
+        System.out.println(Arrays.toString(arr));
+        // We can use `deepToString` method for multidimensional Arrays
+        System.out.println(Arrays.deepToString(arr));
+        // Print using for-each loop
+        for (int[] i : arr) {
+            for (int j : i) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+
+        // We can also create multidimensional arrays with different lengths
+        // Individual size of array can vary as each array is an individual object
+        int[][] arr2D = {
+                {1, 2},
+                {3, 4, 5, 6},
+                {7, 8, 9}
+        };
+        System.out.println(Arrays.deepToString(arr2D));
+
+        // Input multidimensional array
+        int[][] inputArr2D = new int[3][4];
+        for (int row = 0; row < inputArr2D.length; row++) {
+            for (int col = 0; col < inputArr2D[row].length; col++) {
+                // System.out.println("Enter element " + col + " of row " + row + " :");
+                // inputArr2D[row][col] = in.nextInt();
+                inputArr2D[row][col] = (row + col) * 3;
+            }
+        }
+        System.out.println(Arrays.deepToString(inputArr2D));
+        
+        // Input multidimensional variable array
+        int[][] inputVariableArr2D = new int[3][4];
+        for (int row = 0; row < inputVariableArr2D.length; row++) {
+            for (int col = 0; col < inputVariableArr2D[row].length; col++) {
+                // System.out.println("Enter element " + col + " of row " + row + " :");
+                // inputArr2D[row][col] = in.nextInt();
+                inputVariableArr2D[row][col] = (row + col) * 3;
+            }
+        }
+        System.out.println(Arrays.deepToString(inputArr2D));
     }
 
     static void change(int[] arr) {
