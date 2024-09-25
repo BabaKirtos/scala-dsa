@@ -116,17 +116,21 @@ public class L1Arrays {
             }
         }
         System.out.println(Arrays.deepToString(inputArr2D));
-        
+
         // Input multidimensional variable array
-        int[][] inputVariableArr2D = new int[3][4];
-        for (int row = 0; row < inputVariableArr2D.length; row++) {
-            for (int col = 0; col < inputVariableArr2D[row].length; col++) {
-                // System.out.println("Enter element " + col + " of row " + row + " :");
-                // inputArr2D[row][col] = in.nextInt();
-                inputVariableArr2D[row][col] = (row + col) * 3;
+        int[][] variableArr2D = new int[3][];
+        System.out.println(Arrays.deepToString(variableArr2D));
+        for (int row = 0; row < variableArr2D.length; row++) {
+            System.out.println("Enter the number of elements for row " + row + " :");
+            // We have only declared row objects (pointing to null) so far
+            // We need to initialize column objects (again pointing to null) before value assignment
+            variableArr2D[row] = new int[in.nextInt()];
+            for (int col = 0; col < variableArr2D[row].length; col++) {
+                System.out.println("Enter element " + col + " of row " + row + " :");
+                variableArr2D[row][col] = in.nextInt();
             }
         }
-        System.out.println(Arrays.deepToString(inputArr2D));
+        System.out.println(Arrays.deepToString(variableArr2D));
     }
 
     static void change(int[] arr) {
