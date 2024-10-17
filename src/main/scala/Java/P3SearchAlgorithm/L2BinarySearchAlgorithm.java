@@ -1,7 +1,5 @@
 package Java.P3SearchAlgorithm;
 
-import static java.lang.Math.round;
-
 public class L2BinarySearchAlgorithm {
 
     public static void main(String[] args) {
@@ -45,20 +43,17 @@ public class L2BinarySearchAlgorithm {
     }
 
     static int binarySearch(int[] arr, int target) {
-        int startIndex = 0;
-        int endIndex = arr.length - 1;
-        int middleIndex = (startIndex + endIndex) / 2;
-        while (middleIndex >= 0 && middleIndex < arr.length) {
-            if (arr[middleIndex] < target) {
-                startIndex = middleIndex + 1;
+        int start = 0;
+        int end = arr.length - 1;
+        while (start <= end) {
+            int mid = start + ((end - start) / 2);
+            if (target > arr[mid]) {
+                start = mid + 1;
+            } else if (target < arr[mid]) {
+                end = mid - 1;
+            } else {
+                return mid;
             }
-            if (arr[middleIndex] > target) {
-                endIndex = middleIndex - 1;
-            }
-            if (arr[middleIndex] == target) {
-                return middleIndex;
-            }
-            middleIndex = (startIndex + endIndex) / 2;
         }
         return -1;
     }
