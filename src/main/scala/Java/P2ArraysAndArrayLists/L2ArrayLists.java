@@ -79,7 +79,7 @@ public class L2ArrayLists {
         return max;
     }
 
-    static void reverse(int[] arr) {
+    public static void reverse(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
         while (start < end) {
@@ -87,5 +87,18 @@ public class L2ArrayLists {
             start++;
             end--;
         }
+    }
+
+    // Implement an immutable reverse method
+    public static int[] immutableReverse(int[] arr) {
+        int[] temp = arr.clone();
+        int start = 0;
+        int end = temp.length - 1;
+        while (start < end) {
+            swapIndex(temp, start, end);
+            start++;
+            end--;
+        }
+        return temp;
     }
 }

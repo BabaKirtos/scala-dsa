@@ -1,5 +1,7 @@
 package Java.P3SearchAlgorithm;
 
+import static Java.P2ArraysAndArrayLists.L2ArrayLists.immutableReverse;
+
 public class L2BinarySearchAlgorithm {
 
     public static void main(String[] args) {
@@ -40,6 +42,41 @@ public class L2BinarySearchAlgorithm {
         System.out.println(binarySearch(input, 41)); // 12
         System.out.println(binarySearch(input, 99)); // -1
         System.out.println(binarySearch(input, -99));// -1
+
+        // Test order agnostic binary search
+        // Ascending
+        System.out.println(orderAgnosticBinarySearch(input, 2)); // 0
+        System.out.println(orderAgnosticBinarySearch(input, 4)); // 1
+        System.out.println(orderAgnosticBinarySearch(input, 6)); // 2
+        System.out.println(orderAgnosticBinarySearch(input, 9)); // 3
+        System.out.println(orderAgnosticBinarySearch(input, 11)); // 4
+        System.out.println(orderAgnosticBinarySearch(input, 13)); // 5
+        System.out.println(orderAgnosticBinarySearch(input, 15)); // 6
+        System.out.println(orderAgnosticBinarySearch(input, 17)); // 7
+        System.out.println(orderAgnosticBinarySearch(input, 20)); // 8
+        System.out.println(orderAgnosticBinarySearch(input, 25)); // 9
+        System.out.println(orderAgnosticBinarySearch(input, 34)); // 10
+        System.out.println(orderAgnosticBinarySearch(input, 39)); // 11
+        System.out.println(orderAgnosticBinarySearch(input, 41)); // 12
+        System.out.println(orderAgnosticBinarySearch(input, 99)); // -1
+        System.out.println(orderAgnosticBinarySearch(input, -99));// -1
+        // Descending
+        int[] reversedInput = immutableReverse(input);
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 2)); // 0
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 4)); // 1
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 6)); // 2
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 9)); // 3
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 11)); // 4
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 13)); // 5
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 15)); // 6
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 17)); // 7
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 20)); // 8
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 25)); // 9
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 34)); // 10
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 39)); // 11
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 41)); // 12
+        System.out.println(orderAgnosticBinarySearch(reversedInput, 99)); // -1
+        System.out.println(orderAgnosticBinarySearch(reversedInput, -99));// -1
     }
 
     static int binarySearch(int[] arr, int target) {
@@ -50,6 +87,26 @@ public class L2BinarySearchAlgorithm {
             if (target > arr[mid]) {
                 start = mid + 1;
             } else if (target < arr[mid]) {
+                end = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+    // Order agnostic binary search algorithm
+    static int orderAgnosticBinarySearch(int[] arr, int target) {
+        int start = 0;
+        int end = arr.length - 1;
+        // if true, arr is ascending, else descending
+        boolean order = arr[start] < arr[end];
+        while (start <= end) {
+            int mid = start + ((end - start) / 2);
+            // use ternary operator to check order and apply condition
+            if (order ? target > arr[mid] : target < arr[mid]) {
+                start = mid + 1;
+            } else if (order ? target < arr[mid] : target > arr[mid]) {
                 end = mid - 1;
             } else {
                 return mid;
