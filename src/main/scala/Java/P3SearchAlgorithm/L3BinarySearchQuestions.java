@@ -8,18 +8,18 @@ public class L3BinarySearchQuestions {
         // is greater than or equal to the target number
         // if ceiling target is 20, answer is index of 21 ie 8
         int[] q1Input = {-3, 2, 4, 7, 10, 13, 16, 18, 21, 28};
-        
+
         // Find ceil
-        System.out.println(ceilOrFloorBS(q1Input, 24, true)); // 9
-        System.out.println(ceilOrFloorBS(q1Input, 15, true)); // 6
-        System.out.println(ceilOrFloorBS(q1Input, -1, true)); // 1
-        System.out.println(ceilOrFloorBS(q1Input, 12, true)); // 5
-        System.out.println(ceilOrFloorBS(q1Input, 28, true)); // 9
-        System.out.println(ceilOrFloorBS(q1Input, -3, true)); // 0
-        System.out.println(ceilOrFloorBS(q1Input, 3, true)); // 2
-        System.out.println(ceilOrFloorBS(q1Input, 30, true)); // -1
-        System.out.println(ceilOrFloorBS(q1Input, -5, true)); // -1
-        
+        System.out.println(ceilOrFloorBS(q1Input, 24)); // 9
+        System.out.println(ceilOrFloorBS(q1Input, 15)); // 6
+        System.out.println(ceilOrFloorBS(q1Input, -1)); // 1
+        System.out.println(ceilOrFloorBS(q1Input, 12)); // 5
+        System.out.println(ceilOrFloorBS(q1Input, 28)); // 9
+        System.out.println(ceilOrFloorBS(q1Input, -3)); // 0
+        System.out.println(ceilOrFloorBS(q1Input, 3)); // 2
+        System.out.println(ceilOrFloorBS(q1Input, 30)); // -1
+        System.out.println(ceilOrFloorBS(q1Input, -5)); // -1
+
         // Find floor
         System.out.println(ceilOrFloorBS(q1Input, 24, false)); // 8
         System.out.println(ceilOrFloorBS(q1Input, 15, false)); // 5
@@ -30,6 +30,12 @@ public class L3BinarySearchQuestions {
         System.out.println(ceilOrFloorBS(q1Input, 3, false)); // 1
         System.out.println(ceilOrFloorBS(q1Input, 30, false)); // -1
         System.out.println(ceilOrFloorBS(q1Input, -5, false)); // -1
+    }
+
+    // Instead of having default parameters we use function overloading
+    // https://stackoverflow.com/questions/997482/does-java-support-default-parameter-values
+    static int ceilOrFloorBS(int[] arr, int target) {
+        return ceilOrFloorBS(arr, target, true);
     }
 
     static int ceilOrFloorBS(int[] arr, int target, boolean isCeil) {
