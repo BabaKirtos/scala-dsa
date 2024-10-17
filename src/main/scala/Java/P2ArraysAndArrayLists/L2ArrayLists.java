@@ -90,6 +90,51 @@ public class L2ArrayLists {
     }
 
     // Implement an immutable reverse method
+    // If an array contains references to objects, then clone copies those references
+    // instead of creating new copies for them, which would result in mutation of the
+    // original objects if the clone array is mutated. To overcome this we need to have
+    // deep clone, which would be by implementing Cloneable interface by the object
+    //class MyObject implements Cloneable {
+    //    int value;
+    //
+    //    MyObject(int value) {
+    //        this.value = value;
+    //    }
+    //
+    //    @Override
+    //    protected MyObject clone() {
+    //        return new MyObject(this.value); // Create a new instance with the same value
+    //    }
+    //}
+    //
+    //public class DeepCopyExample {
+    //    public static void main(String[] args) {
+    //        // Create an array of MyObject
+    //        MyObject[] originalArray = {new MyObject(1), new MyObject(2)};
+    //
+    //        // Create a new array for the deep copy
+    //        MyObject[] clonedArray = new MyObject[originalArray.length];
+    //
+    //        // Deep copy each object
+    //        for (int i = 0; i < originalArray.length; i++) {
+    //            clonedArray[i] = originalArray[i].clone();
+    //        }
+    //
+    //        // Modify an object in the cloned array
+    //        clonedArray[0].value = 10;
+    //
+    //        // Print values from both arrays
+    //        System.out.println("Original Array:");
+    //        for (MyObject obj : originalArray) {
+    //            System.out.print(obj.value + " ");
+    //        }
+    //
+    //        System.out.println("\nCloned Array:");
+    //        for (MyObject obj : clonedArray) {
+    //            System.out.print(obj.value + " ");
+    //        }
+    //    }
+    //}
     public static int[] immutableReverse(int[] arr) {
         int[] temp = arr.clone();
         int start = 0;

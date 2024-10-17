@@ -60,6 +60,7 @@ public class L2BinarySearchAlgorithm {
         System.out.println(orderAgnosticBinarySearch(input, 41)); // 12
         System.out.println(orderAgnosticBinarySearch(input, 99)); // -1
         System.out.println(orderAgnosticBinarySearch(input, -99));// -1
+        
         // Descending
         int[] reversedInput = immutableReverse(input);
         System.out.println(orderAgnosticBinarySearch(reversedInput, 2)); // 0
@@ -99,14 +100,13 @@ public class L2BinarySearchAlgorithm {
     static int orderAgnosticBinarySearch(int[] arr, int target) {
         int start = 0;
         int end = arr.length - 1;
-        // if true, arr is ascending, else descending
-        boolean order = arr[start] < arr[end];
+        boolean isAsc = arr[start] < arr[end];
         while (start <= end) {
             int mid = start + ((end - start) / 2);
             // use ternary operator to check order and apply condition
-            if (order ? target > arr[mid] : target < arr[mid]) {
+            if (isAsc ? target > arr[mid] : target < arr[mid]) {
                 start = mid + 1;
-            } else if (order ? target < arr[mid] : target > arr[mid]) {
+            } else if (isAsc ? target < arr[mid] : target > arr[mid]) {
                 end = mid - 1;
             } else {
                 return mid;
