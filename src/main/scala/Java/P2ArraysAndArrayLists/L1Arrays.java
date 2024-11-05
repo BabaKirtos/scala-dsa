@@ -98,7 +98,7 @@ public class L1Arrays {
         }
 
         // We can also create multidimensional arrays with different lengths
-        // Individual size of array can vary as each array is an individual object
+        // Individual size of an array can vary as each array is an individual object
         int[][] arr2D = {
                 {1, 2},
                 {3, 4, 5, 6},

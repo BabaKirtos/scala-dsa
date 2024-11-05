@@ -92,7 +92,7 @@ public class L2ArrayLists {
     // Implement an immutable reverse method
     // If an array contains references to objects, then clone copies those references
     // instead of creating new copies for them, which would result in mutation of the
-    // original objects if the clone array is mutated. To overcome this we need to have
+    // original objects if the clone array is mutated. To overcome this, we need to have
     // deep clone, which would be by implementing Cloneable interface by the object
     // Copy is better than clone -> https://www.artima.com/articles/josh-bloch-on-design#part13
     public static int[] immutableReverse(int[] arr) {

@@ -6,8 +6,8 @@ public class L1Introduction {
 
     public static void main(String[] args) {
 
-        // In the below statement, a is the reference variable and 10 is the object
-        // `a` is stored in stack, whereas object 10 is stored in heap memory
+        // In the below statement, `name` is the reference variable and "Baba" is the object
+        // `name` is stored in stack, whereas object "Baba" is stored in heap memory
         String name = "Baba";
         // When we reassign `a` to another value like 20, object 10 is cleared from
         // the heap memory by the garbage collector
@@ -65,7 +65,7 @@ public class L1Introduction {
         System.out.println(salary);
 
         // do while loop
-        // used when we want to run the loop atleast once
+        // used when we want to run the loop at least once
         int n = 5;
         do {
             System.out.println(n);
@@ -92,7 +92,7 @@ public class L1Introduction {
         }
         System.out.println("Max number is: " + max);
 
-        // take a char input and tell if it is upper or lower case
+        // take a char input and tell if it is an upper or lower case
         System.out.println("Enter a character:");
 
         // char ch = input.next().trim().charAt(0);
@@ -123,20 +123,20 @@ public class L1Introduction {
             System.out.println(current);
         }
 
-        // find occurence of a given digit in a number
-        // ex - 13453256353 - 3 occurs 4 time
+        // find occurrence of a given digit in a number
+        // ex - 13453256353 - 3 occurs 4 times
         int mainNum = 1345325353;
         int targetNum = 3;
-        int occurence = 0;
+        int occurrence = 0;
         while (mainNum != 0) {
             if (mainNum % 10 == targetNum) {
-                occurence += 1;
+                occurrence += 1;
                 mainNum /= 10;
             } else {
                 mainNum /= 10;
             }
         }
-        System.out.println("Target occured " + occurence + " times");
+        System.out.println("Target occurred " + occurrence + " times");
 
         // reverse a given number
         int toReverse = 34523986;
@@ -148,7 +148,7 @@ public class L1Introduction {
         System.out.println("Reversed number is " + reversed);
 
         // build a calculator app
-        // the app should terminate when user enters x
+        // the app should terminate when a user enters x
         while (true) {
             int ans = -1;
             System.out.println("Enter an operator (enter x to quit):");

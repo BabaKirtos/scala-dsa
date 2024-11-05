@@ -73,7 +73,7 @@ public class L2Methods {
         x = 10;
         System.out.println(x);
         System.out.println(pi);
-        // As pi is a final variable it cannot be modified
+        // As pi is a final variable, it cannot be modified
         // The below code will throw an error
         // pi = 2;
         // `x` will also be available to all static methods below
