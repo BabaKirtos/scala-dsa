@@ -89,12 +89,13 @@ public class L3BinarySearchQuestions {
         // [m, a, c, e, f, i, m, m]
         System.out.println(Arrays.toString(q3FloorResult));
 
-        // Q3:
+        // Q4:
         // Find the position of the first and last repeated elements in a
-        // sorted array, input = [5,7,7,7,8,8,10], target = 8, ans = [4,5]
+        // sorted array, input = [5,5,5,7,7,7,7,8,8,9,10], target = 8, ans = [7,8]
         // return [-1, -1] if target is not found
-        // We can do this -> ans = [absolute floor + 1, absolute ceil - 1]
+        // We can do this -> ans = [floor - 1, ceil - 1]
         // This would mean running binary search twice
+        // O(2log n) ~ O(log n)
 
     }
 
