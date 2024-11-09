@@ -94,12 +94,24 @@ public class L3BinarySearchQuestions {
         int[] q5Target = {18, 67};
         int[] q5Result = algoTestInt(q5Input, q5Target, L3BinarySearchQuestions::searchInfiniteArray);
         System.out.println(Arrays.toString(q5Result));
+
+        // Q6.
+        // Return the index of the peak of a mountain array
+        // ex: [-5, -3, 2, 4, 7, 10, 13, 15, 16, 14, 12, 11, 9, 6, 5, 3, 1]
+        // ans: 7
+        int[] q6Input = {-5, -3, 2, 4, 7, 10, 13, 15, 17, 19, 22, 14, 12, 11, 9, 6, 5};
+        System.out.println(algoTestInt(q6Input, L3BinarySearchQuestions::mountainPeek));
     }
 
     // To test our algorithms, we will use functional interfaces
     // TODO: Convert to generic functional interface
 
     // int interface
+    @FunctionalInterface
+    interface IntArrayFunction {
+        int apply(int[] arr);
+    }
+
     @FunctionalInterface
     interface IntArrayToIntFunction {
         int apply(int[] arr, int target);
@@ -120,6 +132,10 @@ public class L3BinarySearchQuestions {
     // To test our algorithms we create a method which takes an Array of the
     // target elements, calls the algo function on each element of the target
     // array and returns the result array
+    static int algoTestInt(int[] inputArr, IntArrayFunction function) {
+        return function.apply(inputArr);
+    }
+
     static int[] algoTestInt(int[] inputArr, int[] targetArr, IntArrayToIntFunction function) {
         int[] result = new int[targetArr.length];
         for (int i = 0; i < targetArr.length; i++) {
@@ -270,6 +286,22 @@ public class L3BinarySearchQuestions {
             if (target > arr[mid]) {
                 start = mid + 1;
             } else if (target < arr[mid]) {
+                end = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+    static int mountainPeek(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start <= end) {
+            int mid = start + ((end - start) / 2);
+            if (arr[mid + 1] > arr[mid]) {
+                start = mid + 1;
+            } else if (arr[mid - 1] > arr[mid]) {
                 end = mid - 1;
             } else {
                 return mid;
