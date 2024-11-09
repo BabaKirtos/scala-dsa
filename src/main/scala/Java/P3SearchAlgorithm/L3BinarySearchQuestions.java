@@ -1,5 +1,6 @@
 package Java.P3SearchAlgorithm;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class L3BinarySearchQuestions {
@@ -105,13 +106,9 @@ public class L3BinarySearchQuestions {
         // This would mean running binary search twice
         // O(2log n) ~ O(log n)
         int[] q4Input = {5, 5, 5, 7, 7, 7, 7, 8, 8, 9, 10};
-        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 5)));
-        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 7)));
-        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 8)));
-        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 9)));
-        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 10)));
-        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 3)));
-        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 12)));
+        int[] q4Target = prependAppendArray(new int[]{2, 3}, getUniqueElementsIntArray(q4Input), new int[]{11, 12});
+        int[][] q4Result = algoTestIntArray(q4Input, q4Target, L3BinarySearchQuestions::firstLastOccurrence);
+        System.out.println(Arrays.deepToString(q4Result));
     }
 
     // To test our algorithms, we will use functional interfaces
@@ -129,6 +126,12 @@ public class L3BinarySearchQuestions {
         char apply(char[] arr, char target);
     }
 
+    // int array interface
+    @FunctionalInterface
+    interface IntArrayToIntArrayFunction {
+        int[] apply(int[] arr, int target);
+    }
+
     // To test our algorithms we create a method which takes an Array of the
     // target elements, calls the algo function on each element of the target
     // array and returns the result array
@@ -142,6 +145,14 @@ public class L3BinarySearchQuestions {
 
     static char[] algoTestChar(char[] inputArr, char[] targetArr, CharArrayToCharFunction function) {
         char[] result = new char[targetArr.length];
+        for (int i = 0; i < targetArr.length; i++) {
+            result[i] = function.apply(inputArr, targetArr[i]);
+        }
+        return result;
+    }
+
+    static int[][] algoTestIntArray(int[] inputArr, int[] targetArr, IntArrayToIntArrayFunction function) {
+        int[][] result = new int[targetArr.length][2];
         for (int i = 0; i < targetArr.length; i++) {
             result[i] = function.apply(inputArr, targetArr[i]);
         }
@@ -309,6 +320,24 @@ public class L3BinarySearchQuestions {
             temp[i] = input[i];
         }
         return temp;
+    }
+
+    public static int[] getUniqueElementsIntArray(int[] sortedIntArray) {
+        if (sortedIntArray.length == 0) {
+            return new int[0];
+        }
+        ArrayList<Integer> tempList = new ArrayList<>();
+        tempList.add(sortedIntArray[0]);
+        for (int i = 1; i < sortedIntArray.length; i++) {
+            if (sortedIntArray[i] != sortedIntArray[i - 1]) {
+                tempList.add(sortedIntArray[i]);
+            }
+        }
+        int[] tempArray = new int[tempList.size()];
+        for (int i = 0; i < tempList.size(); i++) {
+            tempArray[i] = tempList.get(i);
+        }
+        return tempArray;
     }
 
     public static boolean inBetween(int start, int end, int... targets) {
