@@ -8,13 +8,6 @@ public class L3BinarySearchQuestions {
 
         int[] q1Input = {-3, 2, 4, 7, 10, 13, 16, 18, 21, 28};
 
-        // Transform the array by applying binary search to each element
-        int[] resultSimpleBS = transformArray(q1Input, L3BinarySearchQuestions::simpleBS);
-
-        // Print the result array
-        // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        System.out.println(Arrays.toString(resultSimpleBS));
-
         // Create a target array for testing
         int[] simpleTarget = prependAppendArray(new int[]{-1, -2}, q1Input, new int[]{30, 33});
 
@@ -118,7 +111,7 @@ public class L3BinarySearchQuestions {
         System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 9)));
         System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 10)));
         System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 3)));
-        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 11)));
+        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 12)));
     }
 
     // To test our algorithms, we will use functional interfaces
@@ -136,18 +129,9 @@ public class L3BinarySearchQuestions {
         char apply(char[] arr, char target);
     }
 
-    // We use the below method to implement our functional interface
-    static int[] transformArray(int[] arr, IntArrayToIntFunction function) {
-        int[] result = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            result[i] = function.apply(arr, arr[i]); // Each element is treated as a target
-        }
-        return result;
-    }
-
-    // Another way to test our algorithms is to create a method which takes
-    // an Array of the target elements, calls the algo function on each
-    // element of the target array and returns the result array
+    // To test our algorithms we create a method which takes an Array of the
+    // target elements, calls the algo function on each element of the target
+    // array and returns the result array
     static int[] algoTestInt(int[] inputArr, int[] targetArr, IntArrayToIntFunction function) {
         int[] result = new int[targetArr.length];
         for (int i = 0; i < targetArr.length; i++) {
@@ -259,7 +243,7 @@ public class L3BinarySearchQuestions {
         // [floor + 1, ceil - 1]
         int first = absoluteFloorIntBS(arr, target);
         int last = absoluteCeilIntBS(arr, target);
-        if (first == -1 || last == -1) {
+        if (target < arr[0] || target > arr[arr.length - 1]) {
             return new int[]{-1, -1};
         } else {
             return new int[]{first + 1, last - 1};
