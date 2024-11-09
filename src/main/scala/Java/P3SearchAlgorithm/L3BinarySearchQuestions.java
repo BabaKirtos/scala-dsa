@@ -66,11 +66,11 @@ public class L3BinarySearchQuestions {
         // Absolute ceil, meaning if target is 'a' answer is 'c'
         char[] q3Input = {'a', 'c', 'e', 'f', 'i', 'm'};
         char[] q3Target = {'a', 'c', 'e', 'f', 'i', 'm', 'n', 'z'};
-        char[] q3CeilResult = algoTestChar(q3Input, q3Target, L3BinarySearchQuestions::absoluteCeilCharBS);
+        char[] q3CeilResult = algoTestChar(q3Input, q3Target, L3BinarySearchQuestions::wrapCeilCharBS);
         // [c, e, f, i, m, a, a, a]
         System.out.println(Arrays.toString(q3CeilResult));
         // Absolute floor, meaning if target is 'a' answer is 'm'
-        char[] q3FloorResult = algoTestChar(q3Input, q3Target, L3BinarySearchQuestions::absoluteFloorCharBS);
+        char[] q3FloorResult = algoTestChar(q3Input, q3Target, L3BinarySearchQuestions::wrapFloorCharBS);
         // [m, a, c, e, f, i, m, m]
         System.out.println(Arrays.toString(q3FloorResult));
 
@@ -81,8 +81,8 @@ public class L3BinarySearchQuestions {
         // We can do this -> ans = [floor + 1, ceil - 1]
         // This would mean running binary search twice
         // O(2log n) ~ O(log n)
-        int[] q4Input = {5, 5, 5, 7, 7, 7, 7, 8, 8, 9, 10};
-        int[] q4Target = prependAppendArray(new int[]{2, 3}, getUniqueElementsIntArray(q4Input), new int[]{11, 12});
+        int[] q4Input = {2, 5, 5, 5, 7, 7, 7, 7, 8, 8, 9, 10, 12};
+        int[] q4Target = prependAppendArray(new int[]{3, 6}, getUniqueElementsIntArray(q4Input), new int[]{11, 13});
         int[][] q4Result = algoTestIntArray(q4Input, q4Target, L3BinarySearchQuestions::firstLastOccurrence);
         System.out.println(Arrays.deepToString(q4Result));
     }
@@ -230,7 +230,7 @@ public class L3BinarySearchQuestions {
         // [floor + 1, ceil - 1]
         int first = absoluteFloorIntBS(arr, target);
         int last = absoluteCeilIntBS(arr, target);
-        if (target < arr[0] || target > arr[arr.length - 1]) {
+        if ((first + 1) - (last - 1) >= 1) {
             return new int[]{-1, -1};
         } else {
             return new int[]{first + 1, last - 1};
@@ -255,15 +255,15 @@ public class L3BinarySearchQuestions {
         return in[index];
     }
 
-    static char absoluteCeilCharBS(char[] in, char target) {
-        return absoluteCeilOrFloorCharBS(in, target, true);
+    static char wrapCeilCharBS(char[] in, char target) {
+        return wrapCeilOrFloorCharBS(in, target, true);
     }
 
-    static char absoluteFloorCharBS(char[] in, char target) {
-        return absoluteCeilOrFloorCharBS(in, target, false);
+    static char wrapFloorCharBS(char[] in, char target) {
+        return wrapCeilOrFloorCharBS(in, target, false);
     }
 
-    static char absoluteCeilOrFloorCharBS(char[] in, char target, boolean isCeil) {
+    static char wrapCeilOrFloorCharBS(char[] in, char target, boolean isCeil) {
         int start = 0;
         int end = in.length - 1;
         while (start <= end) {
