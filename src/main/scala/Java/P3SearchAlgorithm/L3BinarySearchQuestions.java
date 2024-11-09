@@ -85,6 +85,15 @@ public class L3BinarySearchQuestions {
         int[] q4Target = prependAppendArray(new int[]{3, 6}, getUniqueElementsIntArray(q4Input), new int[]{11, 13});
         int[][] q4Result = algoTestIntArray(q4Input, q4Target, L3BinarySearchQuestions::firstLastOccurrence);
         System.out.println(Arrays.deepToString(q4Result));
+
+        // Q5:
+        // Find the index of an element in an infinite sorted array
+        // The idea of infinite sorted array is to not use length function
+        // The below can throw index out of bounds exception
+        int[] q5Input = {-5, -3, 2, 4, 7, 10, 13, 16, 18, 21, 28, 29, 34, 67, 109, 130, 132};
+        int[] q5Target = {18, 67};
+        int[] q5Result = algoTestInt(q5Input, q5Target, L3BinarySearchQuestions::searchInfiniteArray);
+        System.out.println(Arrays.toString(q5Result));
     }
 
     // To test our algorithms, we will use functional interfaces
@@ -243,6 +252,30 @@ public class L3BinarySearchQuestions {
 
     static char floorCharBS(char[] in, char target) {
         return ceilOrFloorCharBS(in, target, false);
+    }
+
+    static int searchInfiniteArray(int[] arr, int target) {
+        int start = 0;
+        int end = 1;
+        while (target > arr[end]) {
+            // the below would be logN growth
+            // so total complexity is 2logN ~ logN
+            // end = end + (size of the window * 2)
+            int temp = end + 1;
+            end = end + ((end - start) + 1) * 2;
+            start = temp;
+        }
+        while (start <= end) {
+            int mid = start + ((end - start) / 2);
+            if (target > arr[mid]) {
+                start = mid + 1;
+            } else if (target < arr[mid]) {
+                end = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
     }
 
     static char ceilOrFloorCharBS(char[] in, char target, boolean isCeil) {

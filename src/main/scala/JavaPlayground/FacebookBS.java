@@ -11,8 +11,6 @@ public class FacebookBS {
         // target = 8, ans = [8,9]
         // target = 11, ans = [-1, -1]
         // return [-1, -1] if target is not found
-        // We can do this -> ans = [floor + 1, ceil - 1]
-        // This would mean running binary search twice
         // O(2log n) ~ O(log n)
         int[] input = {2, 5, 5, 5, 7, 7, 7, 7, 8, 8, 9, 10, 12};
         System.out.println(Arrays.toString(facebookBS(input, 7)));
