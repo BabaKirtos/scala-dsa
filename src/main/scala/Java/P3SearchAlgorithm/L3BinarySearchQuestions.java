@@ -8,13 +8,10 @@ public class L3BinarySearchQuestions {
     public static void main(String[] args) {
 
         int[] q1Input = {-3, 2, 4, 7, 10, 13, 16, 18, 21, 28};
-
         // Create a target array for testing
         int[] simpleTarget = prependAppendArray(new int[]{-1, -2}, q1Input, new int[]{30, 33});
-
         // test using our custom int test function
         int[] simpleResult = algoTestInt(q1Input, simpleTarget, L3BinarySearchQuestions::simpleBS);
-
         // Print the result array
         // [-1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1, -1]
         System.out.println(Arrays.toString(simpleResult));
@@ -24,13 +21,10 @@ public class L3BinarySearchQuestions {
         // is greater than or equal to the target number
         // if ceiling target is 20, answer is index of 21 i.e., 8
         // Find the ceil
-
         // Create a target array for testing
         int[] q1Target = {24, 15, -1, 12, 28, -3, 3, 30, -5};
-
         // Get the result array
         int[] q1CeilResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::ceilIntBS);
-
         // Print result array
         // [9, 6, 1, 5, 9, 0, 2, -1, 0]
         System.out.println(Arrays.toString(q1CeilResult));
@@ -38,7 +32,6 @@ public class L3BinarySearchQuestions {
         // Find the floor
         // Get the result array
         int[] q1FloorResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::floorIntBS);
-
         // Print result array
         // [8, 5, 0, 4, 9, 0, 1, 9, -1]
         System.out.println(Arrays.toString(q1FloorResult));
@@ -46,15 +39,10 @@ public class L3BinarySearchQuestions {
         // Testing absolute ceil and floor
         // Get the result array
         int[] q1AbsoluteCeilResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::absoluteCeilIntBS);
-
-        // Print result array
         // [9, 6, 1, 5, 10, 1, 2, -1, 0]
         System.out.println(Arrays.toString(q1AbsoluteCeilResult));
-
         // Get the result array
         int[] q1AbsoluteFloorResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::absoluteFloorIntBS);
-
-        // Print result array
         // [8, 5, 0, 4, 9, 0, 1, 9, -1]
         System.out.println(Arrays.toString(q1AbsoluteFloorResult));
 
@@ -64,37 +52,25 @@ public class L3BinarySearchQuestions {
         // Note: The chars wrap around meaning
         // if target = 'z' and letters = ['a', 'b'], then the answer is 'a'
         char[] q2Input = {'a', 'c', 'e', 'f', 'i', 'm'};
-
         char[] q2Target = {'b', 'g', 'n', 'z'};
-
         // Test using our custom char test function
         char[] q2CeilResult = algoTestChar(q2Input, q2Target, L3BinarySearchQuestions::ceilCharBS);
-
-        // Print result array
         // [c, i, a, a]
         System.out.println(Arrays.toString(q2CeilResult));
-
         // Test using our custom char test function
         char[] q2FloorResult = algoTestChar(q2Input, q2Target, L3BinarySearchQuestions::floorCharBS);
-
-        // Print result array
         // [a, f, m, m]
         System.out.println(Arrays.toString(q2FloorResult));
 
         // Q3:
         // Absolute ceil, meaning if target is 'a' answer is 'c'
         char[] q3Input = {'a', 'c', 'e', 'f', 'i', 'm'};
-
         char[] q3Target = {'a', 'c', 'e', 'f', 'i', 'm', 'n', 'z'};
-
         char[] q3CeilResult = algoTestChar(q3Input, q3Target, L3BinarySearchQuestions::absoluteCeilCharBS);
-
         // [c, e, f, i, m, a, a, a]
         System.out.println(Arrays.toString(q3CeilResult));
-
         // Absolute floor, meaning if target is 'a' answer is 'm'
         char[] q3FloorResult = algoTestChar(q3Input, q3Target, L3BinarySearchQuestions::absoluteFloorCharBS);
-
         // [m, a, c, e, f, i, m, m]
         System.out.println(Arrays.toString(q3FloorResult));
 
