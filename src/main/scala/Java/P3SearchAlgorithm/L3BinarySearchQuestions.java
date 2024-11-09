@@ -35,7 +35,7 @@ public class L3BinarySearchQuestions {
         int[] q1Target = {24, 15, -1, 12, 28, -3, 3, 30, -5};
 
         // Get the result array
-        int[] q1CeilResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::ceilBS);
+        int[] q1CeilResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::ceilIntBS);
 
         // Print result array
         // [9, 6, 1, 5, 9, 0, 2, -1, 0]
@@ -43,11 +43,26 @@ public class L3BinarySearchQuestions {
 
         // Find the floor
         // Get the result array
-        int[] q1FloorResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::floorBS);
+        int[] q1FloorResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::floorIntBS);
 
         // Print result array
         // [8, 5, 0, 4, 9, 0, 1, 9, -1]
         System.out.println(Arrays.toString(q1FloorResult));
+
+        // Testing absolute ceil and floor
+        // Get the result array
+        int[] q1AbsoluteCeilResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::absoluteCeilIntBS);
+
+        // Print result array
+        // [9, 6, 1, 5, 10, 1, 2, -1, 0]
+        System.out.println(Arrays.toString(q1AbsoluteCeilResult));
+
+        // Get the result array
+        int[] q1AbsoluteFloorResult = algoTestInt(q1Input, q1Target, L3BinarySearchQuestions::absoluteFloorIntBS);
+
+        // Print result array
+        // [8, 5, 0, 4, 9, 0, 1, 9, -1]
+        System.out.println(Arrays.toString(q1AbsoluteFloorResult));
 
         // Q2:
         // In an ascending sorted array of chars, return the smallest char,
@@ -93,10 +108,17 @@ public class L3BinarySearchQuestions {
         // Find the position of the first and last repeated elements in a
         // sorted array, input = [5,5,5,7,7,7,7,8,8,9,10], target = 8, ans = [7,8]
         // return [-1, -1] if target is not found
-        // We can do this -> ans = [floor - 1, ceil - 1]
+        // We can do this -> ans = [floor + 1, ceil - 1]
         // This would mean running binary search twice
         // O(2log n) ~ O(log n)
-
+        int[] q4Input = {5, 5, 5, 7, 7, 7, 7, 8, 8, 9, 10};
+        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 5)));
+        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 7)));
+        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 8)));
+        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 9)));
+        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 10)));
+        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 3)));
+        System.out.println(Arrays.toString(firstLastOccurrence(q4Input, 11)));
     }
 
     // To test our algorithms, we will use functional interfaces
@@ -171,15 +193,15 @@ public class L3BinarySearchQuestions {
 
     // Instead of having default parameters, we use function overloading
     // https://stackoverflow.com/questions/997482/does-java-support-default-parameter-values
-    static int ceilBS(int[] arr, int target) {
-        return ceilOrFloorBS(arr, target, true);
+    static int ceilIntBS(int[] arr, int target) {
+        return ceilOrFloorIntBS(arr, target, true);
     }
 
-    static int floorBS(int[] arr, int target) {
-        return ceilOrFloorBS(arr, target, false);
+    static int floorIntBS(int[] arr, int target) {
+        return ceilOrFloorIntBS(arr, target, false);
     }
 
-    static int ceilOrFloorBS(int[] arr, int target, boolean isCeil) {
+    static int ceilOrFloorIntBS(int[] arr, int target, boolean isCeil) {
         int start = 0;
         int end = arr.length - 1;
         while (start <= end) {
@@ -199,6 +221,51 @@ public class L3BinarySearchQuestions {
         }
     }
 
+    static int absoluteCeilIntBS(int[] arr, int target) {
+        return absoluteCeilOrFloorIntBS(arr, target, true);
+    }
+
+    static int absoluteFloorIntBS(int[] arr, int target) {
+        return absoluteCeilOrFloorIntBS(arr, target, false);
+    }
+
+    static int absoluteCeilOrFloorIntBS(int[] arr, int target, boolean isCeil) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start <= end) {
+            int mid = start + ((end - start) / 2);
+            if (isCeil) {
+                if (target < arr[mid]) {
+                    end = mid - 1;
+                } else {
+                    start = mid + 1;
+                }
+            } else {
+                if (target > arr[mid]) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            }
+        }
+        if ((isCeil && target > arr[arr.length - 1]) || (!isCeil && target < arr[0])) {
+            return -1;
+        } else {
+            return isCeil ? start : end;
+        }
+    }
+
+    static int[] firstLastOccurrence(int[] arr, int target) {
+        // [floor + 1, ceil - 1]
+        int first = absoluteFloorIntBS(arr, target);
+        int last = absoluteCeilIntBS(arr, target);
+        if (first == -1 || last == -1) {
+            return new int[]{-1, -1};
+        } else {
+            return new int[]{first + 1, last - 1};
+        }
+    }
+
     static char ceilCharBS(char[] in, char target) {
         return ceilOrFloorCharBS(in, target, true);
     }
@@ -213,7 +280,7 @@ public class L3BinarySearchQuestions {
         if (target < in[0] && !isCeil) return in[in.length - 1];
         // Convert to int array and reuse ceiOrFloorBS method
         int[] arr = charToIntArray(in);
-        int index = ceilOrFloorBS(arr, target, isCeil);
+        int index = ceilOrFloorIntBS(arr, target, isCeil);
         return in[index];
     }
 
