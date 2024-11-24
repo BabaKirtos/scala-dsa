@@ -107,8 +107,8 @@ public class L3BinarySearchQuestions {
         // Q7.
         // Find the target in a mountain array
         int[] q7Target = prependAppendArray(new int[]{-7, -4, -1}, q6Input, new int[]{8, 20, 99});
-        System.out.println(Arrays.toString(algoTestInt(q6Input, q7Target, L3BinarySearchQuestions::searchInMountainArray)));
-
+        int[] q7Result = algoTestInt(q6Input, q7Target, L3BinarySearchQuestions::searchInMountainArray);
+        System.out.println(Arrays.toString(q7Result));
     }
 
     // To test our algorithms, we will use functional interfaces
