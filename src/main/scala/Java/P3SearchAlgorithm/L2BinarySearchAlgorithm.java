@@ -97,7 +97,7 @@ public class L2BinarySearchAlgorithm {
     }
 
     // Order agnostic binary search algorithm
-    static int orderAgnosticBinarySearch(int[] arr, int target) {
+    public static int orderAgnosticBinarySearch(int[] arr, int target) {
         int start = 0;
         int end = arr.length - 1;
         boolean isAsc = arr[start] < arr[end];

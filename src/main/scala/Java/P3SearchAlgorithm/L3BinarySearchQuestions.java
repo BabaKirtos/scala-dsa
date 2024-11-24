@@ -3,6 +3,8 @@ package Java.P3SearchAlgorithm;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static Java.P3SearchAlgorithm.L2BinarySearchAlgorithm.orderAgnosticBinarySearch;
+
 public class L3BinarySearchQuestions {
 
     public static void main(String[] args) {
@@ -100,7 +102,13 @@ public class L3BinarySearchQuestions {
         // ex: [-5, -3, 2, 4, 7, 10, 13, 15, 16, 14, 12, 11, 9, 6, 5, 3, 1]
         // ans: 7
         int[] q6Input = {-5, -3, 2, 4, 7, 10, 13, 15, 17, 19, 22, 14, 12, 11, 9, 6, 5};
-        System.out.println(algoTestInt(q6Input, L3BinarySearchQuestions::mountainPeek));
+        System.out.println(algoTestInt(q6Input, L3BinarySearchQuestions::mountainPeak));
+
+        // Q7.
+        // Find the target in a mountain array
+        int[] q7Target = prependAppendArray(new int[]{-7, -4, -1}, q6Input, new int[]{8, 20, 99});
+        System.out.println(Arrays.toString(algoTestInt(q6Input, q7Target, L3BinarySearchQuestions::searchInMountainArray)));
+
     }
 
     // To test our algorithms, we will use functional interfaces
@@ -294,7 +302,7 @@ public class L3BinarySearchQuestions {
         return -1;
     }
 
-    static int mountainPeek(int[] arr) {
+    static int mountainPeak(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
         while (start <= end) {
@@ -308,6 +316,24 @@ public class L3BinarySearchQuestions {
             }
         }
         return -1;
+    }
+
+    static int searchInMountainArray(int[] arr, int target) {
+        // split array on peak
+        int peakIndex = mountainPeak(arr);
+        int[][] splitArr = splitArray(arr, peakIndex);
+        // search using Order Agnostic Binary Search
+        int result = orderAgnosticBinarySearch(splitArr[0], target);
+        if (result != -1) {
+            return result;
+        } else {
+            result = orderAgnosticBinarySearch(splitArr[1], target);
+            if (result != -1) {
+                return result + peakIndex;
+            } else {
+                return result;
+            }
+        }
     }
 
     static char ceilOrFloorCharBS(char[] in, char target, boolean isCeil) {
@@ -379,6 +405,13 @@ public class L3BinarySearchQuestions {
             tempArray[i] = tempList.get(i);
         }
         return tempArray;
+    }
+
+    public static int[][] splitArray(int[] arr, int splitIndex) {
+        int[][] temp = new int[2][];
+        temp[0] = Arrays.copyOfRange(arr, 0, splitIndex);
+        temp[1] = Arrays.copyOfRange(arr, splitIndex, arr.length);
+        return temp;
     }
 
     public static boolean inBetween(int start, int end, int... targets) {
