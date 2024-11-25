@@ -92,6 +92,7 @@ public class L3BinarySearchQuestions {
         // Find the index of an element in an infinite sorted array
         // The idea of infinite sorted array is to not use length function
         // The below can throw index out of bounds exception
+        // TODO: Fix `searchInfiniteArray` to not throw errors
         int[] q5Input = {-5, -3, 2, 4, 7, 10, 13, 16, 18, 21, 28, 29, 34, 67, 109, 130, 132};
         int[] q5Target = {18, 67};
         int[] q5Result = algoTestInt(q5Input, q5Target, L3BinarySearchQuestions::searchInfiniteArray);
