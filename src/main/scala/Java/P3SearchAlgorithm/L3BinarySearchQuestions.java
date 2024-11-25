@@ -109,6 +109,15 @@ public class L3BinarySearchQuestions {
         int[] q7Target = prependAppendArray(new int[]{-7, -4, -1}, q6Input, new int[]{8, 20, 99});
         int[] q7Result = algoTestInt(q6Input, q7Target, L3BinarySearchQuestions::searchInMountainArray);
         System.out.println(Arrays.toString(q7Result));
+
+        // Q8.
+        // Search in a rotated sorted array
+        // ex rotation: [0,1,2,4,5,6,7,8,9,10] -> after rotation at 4 -> [4,5,6,7,8,9,10,0,1,2]
+        // we are provided with the rotated array and target
+        int[] q8Input = {6, 7, 8, 9, 10, 12, 15, 0, 1, 2, 4, 5};
+        int[] q8Target = prependAppendArray(new int[]{-7, -4, 3}, q8Input, new int[]{13, 20, 99});
+        int[] q8Result = algoTestInt(q8Input, q8Target, L3BinarySearchQuestions::searchTargetInRotatedArray);
+        System.out.println(Arrays.toString(q8Result));
     }
 
     // To test our algorithms, we will use functional interfaces
@@ -334,6 +343,40 @@ public class L3BinarySearchQuestions {
                 return result;
             }
         }
+    }
+
+    static int searchTargetInRotatedArray(int[] arr, int target) {
+        int peak = searchPivotInRotatedArray(arr);
+        int[][] split = splitArray(arr, peak + 1);
+        int result = simpleBS(split[0], target);
+        if (result != -1) {
+            return result;
+        } else {
+            result = simpleBS(split[1], target);
+            if (result != -1) {
+                return result + peak + 1;
+            } else {
+                return result;
+            }
+        }
+    }
+
+    static int searchPivotInRotatedArray(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start <= end) {
+            int mid = start + ((end - start) / 2);
+            // the below condition will throw an index out of bounds
+            // exception if there are no pivots
+            if (arr[mid] - arr[mid + 1] > 0) {
+                return mid;
+            } else if (arr[start] > arr[mid]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return -1;
     }
 
     static char ceilOrFloorCharBS(char[] in, char target, boolean isCeil) {
