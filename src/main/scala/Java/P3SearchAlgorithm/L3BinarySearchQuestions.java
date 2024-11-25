@@ -111,7 +111,7 @@ public class L3BinarySearchQuestions {
         System.out.println(Arrays.toString(q7Result));
 
         // Q8.
-        // Search in a rotated sorted array
+        // Search in a rotated sorted distinct array
         // ex rotation: [0,1,2,4,5,6,7,8,9,10] -> after rotation at 4 -> [4,5,6,7,8,9,10,0,1,2]
         // we are provided with the rotated array and target
         int[] q8Input = {6, 7, 8, 9, 10, 12, 15, 0, 1, 2, 4, 5};
@@ -346,15 +346,19 @@ public class L3BinarySearchQuestions {
     }
 
     static int searchTargetInRotatedArray(int[] arr, int target) {
-        int peak = searchPivotInRotatedArray(arr);
-        int[][] split = splitArray(arr, peak + 1);
+        int pivot = searchPivotInRotatedArray(arr) + 1;
+        // if pivot is -1, then we have a normal array with no rotation
+        if (pivot == -1) {
+            return simpleBS(arr, target);
+        }
+        int[][] split = splitArray(arr, pivot);
         int result = simpleBS(split[0], target);
         if (result != -1) {
             return result;
         } else {
             result = simpleBS(split[1], target);
             if (result != -1) {
-                return result + peak + 1;
+                return result + pivot;
             } else {
                 return result;
             }
@@ -366,11 +370,13 @@ public class L3BinarySearchQuestions {
         int end = arr.length - 1;
         while (start <= end) {
             int mid = start + ((end - start) / 2);
-            // the below condition will throw an index out of bounds
-            // exception if there are no pivots
-            if (arr[mid] - arr[mid + 1] > 0) {
+            // to avoid an index out of bounds exception 
+            // we use && operator for short circuit
+            if (mid < end && arr[mid] > arr[mid + 1]) {
                 return mid;
-            } else if (arr[start] > arr[mid]) {
+            } else if (mid > start && arr[mid] > arr[mid + 1]) {
+                return mid - 1;
+            } else if (arr[mid] < arr[start]) {
                 end = mid - 1;
             } else {
                 start = mid + 1;
