@@ -112,13 +112,33 @@ public class L3BinarySearchQuestions {
         System.out.println(Arrays.toString(q7Result));
 
         // Q8.
-        // Search in a rotated sorted distinct array
+        // Search in a distinct rotated sorted distinct array
         // ex rotation: [0,1,2,4,5,6,7,8,9,10] -> after rotation at 4 -> [4,5,6,7,8,9,10,0,1,2]
         // we are provided with the rotated array and target
-        int[] q8Input = {6, 7, 8, 9, 10, 12, 15, 0, 1, 2, 4, 5};
+        int[] q8Input = { 0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 12, 15};
         int[] q8Target = prependAppendArray(new int[]{-7, -4, 3}, q8Input, new int[]{13, 20, 99});
-        int[] q8Result = algoTestInt(q8Input, q8Target, L3BinarySearchQuestions::searchTargetInRotatedArray);
+        int[] q8Result = algoTestInt(q8Input, q8Target, L3BinarySearchQuestions::searchTargetInDistinctRotatedArray);
         System.out.println(Arrays.toString(q8Result));
+
+        // Q9.
+        // TODO: Fix the below method and test more cases
+        // Find the pivot in rotated sorted array (not distinct)
+        // ex: [2, 2, 2, 2, 2, 2, 2, 9] -> rotated twice -> [2, 9, 2, 2, 2, 2, 2, 2]
+        // for the above sample, start = mid = end
+        // [6, 6, 7, 8, 8, 8, 9, 10, 10, 12, 15, 15, 0, 1, 1, 1, 2, 2, 4, 5, 5, 5, 5]
+        int[] q9Input = {2, 2, 2, 2, 2, 2, 9, 2};
+        int q9Result = algoTestInt(q9Input, L3BinarySearchQuestions::searchPivotInRotatedArray);
+        System.out.println(q9Result);
+
+        // Q10.
+        // https://leetcode.com/problems/split-array-largest-sum/description/
+        // TODO: Solve later
+        // Ex: 
+        // Input: nums = [7,2,5,10,8], k = 2
+        // Output: 18
+        // Explanation: There are four ways to split nums into two subarrays.
+        // The best way is to split it into [7,2,5] and [10,8], where the largest 
+        // sum among the two subarrays is only 18.
     }
 
     // To test our algorithms, we will use functional interfaces
@@ -346,8 +366,8 @@ public class L3BinarySearchQuestions {
         }
     }
 
-    static int searchTargetInRotatedArray(int[] arr, int target) {
-        int pivot = searchPivotInRotatedArray(arr) + 1;
+    static int searchTargetInDistinctRotatedArray(int[] arr, int target) {
+        int pivot = searchPivotInDistinctRotatedArray(arr) + 1;
         // if pivot is -1, then we have a normal array with no rotation
         if (pivot == -1) {
             return simpleBS(arr, target);
@@ -366,7 +386,7 @@ public class L3BinarySearchQuestions {
         }
     }
 
-    static int searchPivotInRotatedArray(int[] arr) {
+    static int searchPivotInDistinctRotatedArray(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
         while (start <= end) {
@@ -375,8 +395,29 @@ public class L3BinarySearchQuestions {
             // we use && operator for short circuit
             if (mid < end && arr[mid] > arr[mid + 1]) {
                 return mid;
-            } else if (mid > start && arr[mid] > arr[mid + 1]) {
+            } else if (mid > start && arr[mid] < arr[mid - 1]) {
                 return mid - 1;
+            } else if (arr[mid] < arr[start]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    static int searchPivotInRotatedArray(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start <= end) {
+            int mid = start + ((end - start) / 2);
+            if (mid < end && arr[mid] > arr[mid + 1]) {
+                return mid;
+            } else if (mid > start && arr[mid] < arr[mid - 1]) {
+                return mid - 1;
+            } else if (arr[mid] == arr[start] && arr[mid] == arr[end]) {
+                start++;
+                end--;
             } else if (arr[mid] < arr[start]) {
                 end = mid - 1;
             } else {
