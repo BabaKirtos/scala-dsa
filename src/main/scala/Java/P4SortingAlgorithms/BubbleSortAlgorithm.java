@@ -26,26 +26,26 @@ public class BubbleSortAlgorithm {
         // The time complexity, best case -> O(N)
         // worst case -> O(N^2)
         int[] input = {3, 1, 8, 5, 4, 0, 2, 9, 7, 6};
-        SimpleBubbleSortAsc(input);
+        bubbleSortAsc(input);
         System.out.println(Arrays.toString(input));
         // The below will have a time complexity of O(N^2)
         // as the array is sorted in ascending order
-        SimpleBubbleSortDesc(input);
+        bubbleSortDesc(input);
         System.out.println(Arrays.toString(input));
         // Debug to check that the external loop only
         // runs once if no swapping takes place for i = 0
-        SimpleBubbleSortDesc(input);
+        bubbleSortDesc(input);
     }
 
-    static void SimpleBubbleSortAsc(int[] arr) {
-        SimpleBubbleSort(arr, true);
+    static void bubbleSortAsc(int[] arr) {
+        bubbleSort(arr, true);
     }
 
-    static void SimpleBubbleSortDesc(int[] arr) {
-        SimpleBubbleSort(arr, false);
+    static void bubbleSortDesc(int[] arr) {
+        bubbleSort(arr, false);
     }
 
-    static void SimpleBubbleSort(int[] arr, boolean isAsc) {
+    static void bubbleSort(int[] arr, boolean isAsc) {
         // if no swaps occur in the internal loop for i = 0
         // we will break as the array is already sorted
         boolean noSwaps = true;

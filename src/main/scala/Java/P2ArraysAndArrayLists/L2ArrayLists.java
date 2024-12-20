@@ -62,7 +62,7 @@ public class L2ArrayLists {
         System.out.println(Arrays.toString(sampleArr));
     }
 
-    static void swapIndex(int[] arr, int index1, int index2) {
+    public static void swapIndex(int[] arr, int index1, int index2) {
         int temp;
         temp = arr[index1];
         arr[index1] = arr[index2];
