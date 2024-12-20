@@ -2,7 +2,7 @@ package Java.P4SortingAlgorithms;
 
 import java.util.Arrays;
 
-public class BubbleSortAlgorithm {
+public class L1BubbleSortAlgorithm {
 
     public static void main(String[] args) {
 

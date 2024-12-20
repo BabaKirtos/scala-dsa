@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import static Java.P2ArraysAndArrayLists.L2ArrayLists.swapIndex;
 
-public class SelectionSortAlgorithm {
+public class L2SelectionSortAlgorithm {
 
     public static void main(String[] args) {
 
